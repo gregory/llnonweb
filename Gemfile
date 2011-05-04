@@ -4,6 +4,7 @@ gem 'rails', '3.0.7'
 gem 'cells'
 gem 'nifty-generators'
 gem 'devise', '1.1.3'
+gem 'omniauth'
 # Bundle edge Rails instead:
 #gem 'rails', :git => 'git://github.com/rails/rails.git'
 
