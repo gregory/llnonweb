@@ -24,11 +24,21 @@
 					</div>
 			</div>
 			<div id="sidenav" name="sidenav">
-				<ul id="side-menu" name="side-menu" class="menu">
-					<% for page in Page.all %>
-					<li><%= link_to page.title, page %> </li>
-					<% end %>
-				</ul>
+				<div id="side-menu" name="side-menu">
+					<ul class="menu">
+						<h4>Menu</h4>
+						<% for page in Page.all %>
+						<li><%= link_to page.title, page %> </li>
+						<% end %>
+					</ul>
+					<br/>
+					<ul class="menu">
+						<h4>Admin menu</h4>
+						<li><%= link_to "Liste des pages", pages_path() %></li>
+						<li><%= link_to "Liste des annonces", ads_path() %></li>
+					</ul>
+				</div>
+				
 			</div>
 			<div id="middle" name="middle">
 				<div id="notifs" name="notifs">

@@ -22,12 +22,13 @@ a {
   overflow: hidden;
 }
 
-.menu{
+.menu > *{
     list-style-type:none;
 }
 .menu  a {
     text-decoration:none;
     color:black;
+display:block;
 }
 .menu a:hover{
     text-decoration:underline;
@@ -56,18 +57,37 @@ position:relative;
         #topnav{
             
         }
+		#usernav{
+			right:0;
+			top:25px;
+			position:absolute;
+			
+		}
+		#usernav a{
+			text-decoration:none;
+			color:black;
+		}
+		#usernav a:hover{
+			text-decoration:underline;
+			color:white;
+		}
     #sidenav{
         width:20%;position:absolute;
         margin-left:5%;
-        height:300px;background-color:green;
+        background-color:green;
+		min-height:300px;
+		
     }
         #side-menu{
             margin-top:10%;
         }
+			#side-menu ul{
+				margin-left:0;
+			}
     #middle{
         width:65%;background-color:pink;
-        height:600px;
         margin-left:30%;
+		min-height:400px;
         
     }
         #notifs{

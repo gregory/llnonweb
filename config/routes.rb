@@ -1,4 +1,6 @@
 Llnonweb::Application.routes.draw do
+  resources :ads
+
   devise_for :users
 
   resources :pages
