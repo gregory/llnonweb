@@ -1,10 +1,13 @@
 Llnonweb::Application.routes.draw do
+  resources :authentications
+
   resources :ads
 
   devise_for :users
 
   resources :pages
   root :to => "pages#index"
+  match '/auth/:provider/callback' => 'authentication#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
