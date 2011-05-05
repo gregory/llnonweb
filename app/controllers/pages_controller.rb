@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  
+  before_filter :authenticate_user!, :except => [:index, :show]
   respond_to :html, :xml, :json, :rss, :atom
   def index
     respond_with(@pages = Page.all) 
