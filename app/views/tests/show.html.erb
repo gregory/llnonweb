@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Monkey:</b>
+  <%= @test.monkey %>
+</p>
+
+<p>
+  <b>Patch:</b>
+  <%= @test.patch %>
+</p>
+
+
+<%= link_to 'Edit', edit_test_path(@test) %> |
+<%= link_to 'Back', tests_path %>

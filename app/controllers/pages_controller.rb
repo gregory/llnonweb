@@ -1,26 +1,30 @@
 class PagesController < ApplicationController
-  respond_to :html, :xml, :json
+  respond_to :html, :xml, :json, :rss, :atom
   def index
-    @pages = Page.all
-    respond_with(@pages)
+    
+    respond_with(@pages = Page.all) 
   end
 
   def show
-    @page = Page.find(params[:id])
     
-    respond_with(@page)
+    
+    respond_with(@page = Page.find(params[:id]))
   end
 
   def new
     @page = Page.new
+    respond_with(@page)
   end
 
   def create
     @page = Page.new(params[:page])
     if @page.save
-      redirect_to @page, :notice => "Successfully created page."
+      respond_with(@page,:notice => "Successfully created page.", :location => @page, :status => :created)
     else
-      render :action => 'new'
+      respond_to do |format|
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @test.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
@@ -31,15 +35,17 @@ class PagesController < ApplicationController
   def update
     @page = Page.find(params[:id])
     if @page.update_attributes(params[:page])
-      redirect_to @page, :notice  => "Successfully updated page."
+      respond_with(@page,:notice => "Successfully updated page.", :location => @page, :status => :created) 
     else
-      render :action => 'edit'
+      respond_to do |format|
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @test.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    @page = Page.find(params[:id])
-    @page.destroy
+    @page = Page.find(params[:id]).destroy
     redirect_to pages_url, :notice => "Successfully destroyed page."
   end
 end

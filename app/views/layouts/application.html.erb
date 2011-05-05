@@ -6,13 +6,15 @@
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
+<%= auto_discovery_link_tag(:rss, {:action => "index"}) %>
   </head>
   <body>
     <div id="container">
 		<div id="wrapper" name="wrapper">
 			<div id="header" name="header">
 					<div id="topnav" name="topnav">
-						<%= content_tag :h1, yield(:title) if show_title? %>
+						<%= content_tag :h1, link_to ('Accueil', root_url)%>
+						
 					</div>
 					<div id="usernav" name="usernav">
 						<% if user_signed_in? %>
