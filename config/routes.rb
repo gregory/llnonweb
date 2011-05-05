@@ -1,6 +1,4 @@
 Llnonweb::Application.routes.draw do
-  resources :tests
-
   resources :authentications
 
   resources :ads
