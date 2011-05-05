@@ -8,6 +8,9 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Llnonweb
   class Application < Rails::Application
+    config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td', 'span'
+      config.action_view.sanitized_allowed_attributes = 'src', 'width', 'height', 'frameborder', 'class'
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -38,5 +41,6 @@ module Llnonweb
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    config.autoload_paths += %W( #{config.root}/app/models/ckeditor )
   end
 end

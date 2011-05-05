@@ -7,6 +7,7 @@ gem 'devise', '1.1.3'
 gem 'omniauth'
 gem 'ckeditor', '3.4.2.pre'
 gem 'stringex'
+gem 'paperclip'
 # Bundle edge Rails instead:
 #gem 'rails', :git => 'git://github.com/rails/rails.git'
 

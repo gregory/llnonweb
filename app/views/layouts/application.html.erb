@@ -3,9 +3,10 @@
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag :defaults, :ckeditor %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
+	
 <% # link vers le  .rss des actions index de la page courante auto_discovery_link_tag(:rss, {:action => "index"}) %>
   </head>
   <body>
