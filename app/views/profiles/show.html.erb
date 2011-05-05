@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back', profiles_path %>
+<p>
+ <%= image_tag avatar_url @profile.user%>
+</p>
+
+<p>
+  <b>Fname:</b>
+  <%= @profile.fname %>
+</p>
+
+<p>
+  <b>Lname:</b>
+  <%= @profile.lname %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @profile.gender %>
+</p>
+
+<p>
+  <b>Birthdate:</b>
+  <%= @profile.birthdate %>
+</p>
+
+<% if !current_user.nil? and current_user.id.equal? @profile.user_id %>
+    [<%= link_to 'Edit', edit_profile_path(@profile) %> |
+    <%= link_to 'Destroy', @profile, :confirm => 'Are you sure?', :method => :delete %>]
+<% end %>
+
+

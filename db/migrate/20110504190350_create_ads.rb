@@ -7,6 +7,7 @@ class CreateAds < ActiveRecord::Migration
       t.text :content
       t.timestamps
     end
+    add_index :ads, :slug, :unique => true
   end
 
   def self.down

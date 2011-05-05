@@ -6,6 +6,7 @@ class CreatePages < ActiveRecord::Migration
       t.text :content
       t.timestamps
     end
+    add_index :pages, :slug, :unique => true
   end
 
   def self.down

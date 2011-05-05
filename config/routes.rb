@@ -1,9 +1,15 @@
 Llnonweb::Application.routes.draw do
+  devise_for :users, :controllers => {:registrations => 'registrations'}
+  resources :profiles
+
   resources :authentications
 
-  resources :ads
+  authenticate :user do
+      resources :ads
+  end
+  
 
-  devise_for :users, :controllers => {:registrations => 'registrations'}
+  
 
   resources :pages
   root :to => "pages#index"

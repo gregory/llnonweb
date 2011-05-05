@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
+  
   respond_to :html, :xml, :json, :rss, :atom
   def index
-    
     respond_with(@pages = Page.all) 
   end
 

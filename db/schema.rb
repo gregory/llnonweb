@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110504220408) do
+ActiveRecord::Schema.define(:version => 20110505155535) do
 
   create_table "ads", :force => true do |t|
     t.string   "slug",        :null => false
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(:version => 20110504220408) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id",                    :null => false
+    t.string   "fname",      :default => ""
+    t.string   "lname",      :default => ""
+    t.string   "gender",     :default => ""
+    t.date     "birthdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "avatar_url"
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

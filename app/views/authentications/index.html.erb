@@ -36,11 +36,12 @@
   <%= image_tag "open_id_64.png", :size => "64x64", :alt => "OpenID" %>
   OpenID
 </a>
+
 <div class="clear"></div>
 
 <% unless user_signed_in? %>
   <p>
-    <strong>Don't use these services?</strong>
+    <strong>Don't use these services?</strong><br/><br/>
     <%= link_to "Sign up", new_user_registration_path %> or
     <%= link_to "sign in", new_user_session_path %> with a password.
   </p>

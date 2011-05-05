@@ -6,7 +6,7 @@
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
-<%= auto_discovery_link_tag(:rss, {:action => "index"}) %>
+<% # link vers le  .rss des actions index de la page courante auto_discovery_link_tag(:rss, {:action => "index"}) %>
   </head>
   <body>
     <div id="container">
@@ -38,6 +38,7 @@
 						<h4>Admin menu</h4>
 						<li><%= link_to "Liste des pages", pages_path() %></li>
 						<li><%= link_to "Liste des annonces", ads_path() %></li>
+						<li><%= link_to "Liste des profiles", profiles_path() %></li>
 					</ul>
 				</div>
 				
