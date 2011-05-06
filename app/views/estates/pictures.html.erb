@@ -1,0 +1,5 @@
+<div>
+   <% @pictures.each { |pic|%>
+       <%= image_tag pic[0], :pbSrc => pic[1], :pbCaption => pic[2], :
+           onclick => "Pop(this,50,'PopBoxImageLarge');"%>
+<% } %> </div>

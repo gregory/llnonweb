@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<p>
+  <b>Nbrooms:</b>
+  <%= @estate.nbrooms %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @estate.active %>
+</p>
+
+<p>
+  <b>Begin:</b>
+  <%= @estate.dbegin %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @estate.dend %>
+</p>
+
+<p>
+  <b>Excerpt:</b>
+  <%= @estate.excerpt %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @estate.content %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @estate.address %>
+</p>
+
+<% if  user_signed_in? and current_user.id.equal? @estate.user_id %>
+<%= link_to 'Edit', edit_estate_path(@estate) %> |
+<% end %>
+<%= link_to 'Back', estates_path %>
+
+<p id="gmaps"><%= gmaps4rails(@json) %></p>

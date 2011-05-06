@@ -1,4 +1,6 @@
 Llnonweb::Application.routes.draw do
+  resources :estates
+
   devise_for :users, :controllers => {:registrations => 'registrations'}
   resources :profiles
 
@@ -6,6 +8,11 @@ Llnonweb::Application.routes.draw do
 
   authenticate :user do
       resources :ads
+      
+  end
+  resources :users, :shallow => true do
+    resources :estates
+    get 'test', :on => :collection
   end
   
 
@@ -13,6 +20,9 @@ Llnonweb::Application.routes.draw do
 
   resources :pages
   root :to => "pages#index"
+  #match '/my_estats' => 'estates#my_estates'
+  match '/profile/:username' => 'profiles#show'
+  
   match '/auth/:provider/callback' => 'authentications#create'
 
   # The priority is based upon order of creation:

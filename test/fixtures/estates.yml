@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  nbrooms: 1
+  active: false
+  begin: 2011-05-06 00:47:19
+  end: 2011-05-06 00:47:19
+  excerpt: MyText
+  content: MyText
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  gmaps: false
+
+two:
+  user_id: 1
+  nbrooms: 1
+  active: false
+  begin: 2011-05-06 00:47:19
+  end: 2011-05-06 00:47:19
+  excerpt: MyText
+  content: MyText
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  gmaps: false

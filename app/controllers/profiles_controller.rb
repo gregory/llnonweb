@@ -14,9 +14,9 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.xml
   def show
-    @profile = Profile.includes(:user).find(params[:id])
+    @profile = Profile.includes(:user).find_by_fname(params[:id])
     
-
+    @json = @profile.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @profile }
@@ -27,16 +27,19 @@ class ProfilesController < ApplicationController
   # GET /profiles/new.xml
   def new
     @profile = Profile.new
+    redirect_to profiles_url, :notice => "One user profile allowed per user." unless !@profile.user_id.equal? current_user
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @profile }
-    end
+    end 
+    
+    
   end
 
   # GET /profiles/1/edit
   def edit
-    @profile = Profile.find(params[:id])
-    #Profile.find_or_create_by_user_id(current_user.id)
+    @profile = Profile.find_by_fname(params[:id])
   end
 
   # POST /profiles
@@ -58,8 +61,8 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.xml
   def update
-    @profile = Profile.find(params[:id])
-
+    @profile = Profile.find_by_fname(params[:id])
+    @profile.user_id = current_user.id
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }

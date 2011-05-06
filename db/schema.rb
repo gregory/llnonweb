@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505204813) do
+ActiveRecord::Schema.define(:version => 20110506113448) do
 
   create_table "ads", :force => true do |t|
     t.string   "slug",        :null => false
@@ -47,6 +47,22 @@ ActiveRecord::Schema.define(:version => 20110505204813) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_assetable_type"
   add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
 
+  create_table "estates", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "nbrooms"
+    t.boolean  "active"
+    t.datetime "dbegin"
+    t.datetime "dend"
+    t.text     "excerpt"
+    t.text     "content"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "slug",       :null => false
     t.string   "title",      :null => false
@@ -64,9 +80,20 @@ ActiveRecord::Schema.define(:version => 20110505204813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_url"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
+
+  create_table "tests", :force => true do |t|
+    t.string   "monkey"
+    t.text     "patch"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

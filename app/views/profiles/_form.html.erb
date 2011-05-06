@@ -12,8 +12,10 @@
   <% end %>
 
 <div class="field">
-    <%= f.label :avatar_url %><br />
-    <%= f.text_field :avatar_url %>
+    <%= current_user.email%>
+	Avatar actuel: <%= image_tag avatar_url current_user %><br />
+	<%= f.label :avatar_url %> <br/>
+    <%= f.text_field :avatar_url, :value => "#{avatar_url current_user}" %> 
   </div>
   <div class="field">
     <%= f.label :fname %><br />
@@ -23,9 +25,13 @@
     <%= f.label :lname %><br />
     <%= f.text_field :lname %>
   </div>
+ <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
   <div class="field">
 	<%= f.label :gender %><br />
-	<%= f.select_tag(:gender, options_for_select(Profile::VALID_GENDER)) %>
+	<%= f.select_tag(:gender, options_for_select(Profile::VALID_GENDER, Profile::VALID_GENDER.last)) %>
     
     
   </div>

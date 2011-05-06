@@ -8,6 +8,9 @@ gem 'omniauth'
 gem 'ckeditor', '3.4.2.pre'
 gem 'stringex'
 gem 'paperclip'
+
+gem 'gmaps4rails'
+gem 'flickr-fu'
 # Bundle edge Rails instead:
 #gem 'rails', :git => 'git://github.com/rails/rails.git'
 

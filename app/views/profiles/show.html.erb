@@ -23,8 +23,11 @@
   <b>Birthdate:</b>
   <%= @profile.birthdate %>
 </p>
+<br/>
+<p id="gmaps"><%= gmaps4rails(@json) %></p>
+<br/>
 
-<% if !current_user.nil? and current_user.id.equal? @profile.user_id %>
+<% if user_signed_in? and current_user.id.equal? @profile.user_id %>
     [<%= link_to 'Edit', edit_profile_path(@profile) %> |
     <%= link_to 'Destroy', @profile, :confirm => 'Are you sure?', :method => :delete %>]
 <% end %>

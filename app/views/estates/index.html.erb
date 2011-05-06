@@ -1,0 +1,45 @@
+<h1>Listing estates</h1>
+<%= link_to 'New Estate', new_estate_path %><br/><br/>
+<ul id="markers_list">  </ul>
+
+
+<br/><br/>
+<table>
+  <tr>
+   
+    <th>Nbrooms</th>
+   
+    <th>Periode</th>
+    <th>Excerpt</th>
+    <th></th>
+    <th>links</th>
+    
+  </tr>
+
+<% @estates.each do |estate| %>
+  <tr>
+    <td><%= estate.nbrooms %></td>
+
+    <td><%= "from #{estate.dbegin.day}/#{estate.dbegin.month}/#{estate.dbegin.year} to  #{estate.dend.day}/#{estate.dend.month}/#{estate.dend.year}" %></td>
+    <td><%= estate.excerpt %></td>
+<td><%= link_to 'Show', estate %></td>
+<td>
+	<% if user_signed_in? and current_user.id.equal? estate.user_id %>
+	
+	<%= link_to 'Edit', edit_estate_path(estate) %>
+	<%= link_to 'Destroy', estate, :confirm => 'Are you sure?', :method => :delete %>
+	<% end %>	
+</td>
+
+   
+  </tr>
+<% end %>
+</table>
+<br />
+<%= gmaps({"map_options" => { "auto_adjust" => "true"}})%>
+<%= gmaps("markers" => {"data" => @json, "options" => {"list_container" => "markers_list",  "randomize" => "true" } }) %>
+
+<%= gmaps({
+       "direction"   => { "data" => { "from" => "Paris, france", "to" => "Toulon, france" } }
+            })
+ %>

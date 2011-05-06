@@ -35,11 +35,19 @@
 						<% end %>
 					</ul>
 					<br/>
+					<% if !current_user.nil? %>
+					<ul id="member" name="member" class="menu">
+						<h4>Member menu</h4>
+						<li><%= link_to "my estates",  user_estates_path(current_user) %></li>
+					</ul>
+					<br/>
+					<% end %>
 					<ul class="menu">
 						<h4>Admin menu</h4>
 						<li><%= link_to "Liste des pages", pages_path() %></li>
 						<li><%= link_to "Liste des annonces", ads_path() %></li>
 						<li><%= link_to "Liste des profiles", profiles_path() %></li>
+						<li><%= link_to "Liste des logements", estates_path() %></li>
 					</ul>
 				</div>
 				
@@ -59,6 +67,7 @@
 			</div>
 		</div>
     </div>
+<%= yield :scripts %>
   </body>
 </html>
 

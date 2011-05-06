@@ -6,9 +6,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    
-    
-    respond_with(@page = Page.find(params[:id]))
+    respond_with(@page = Page.find(params[:id].to_i))
   end
 
   def new
@@ -17,23 +15,25 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = Page.new(params[:page])
+    @page = Page.new(params[:page].to_i)
+    @page.slug = @page.title.to_url
     if @page.save
       respond_with(@page,:notice => "Successfully created page.", :location => @page, :status => :created)
     else
       respond_to do |format|
         format.html { render :action => "new" }
-        format.xml  { render :xml => @test.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   def edit
-    @page = Page.find(params[:id])
+    @page = Page.find(params[:id].to_i)
   end
 
   def update
-    @page = Page.find(params[:id])
+    @page = Page.find(params[:id].to_i)
+    @page.slug = @page.title.to_url
     if @page.update_attributes(params[:page])
       respond_with(@page,:notice => "Successfully updated page.", :location => @page, :status => :created) 
     else
@@ -45,7 +45,7 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page = Page.find(params[:id]).destroy
+    @page = Page.find(params[:id].to_i).destroy
     redirect_to pages_url, :notice => "Successfully destroyed page."
   end
 end

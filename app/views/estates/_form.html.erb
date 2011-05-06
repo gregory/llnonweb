@@ -1,0 +1,46 @@
+<%= form_for(@estate) do |f| %>
+  <% if @estate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estate.errors.count, "error") %> prohibited this estate from being saved:</h2>
+
+      <ul>
+      <% @estate.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nbrooms %><br />
+    <%= f.text_field :nbrooms %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :dbegin %><br />
+    <%= f.datetime_select :dbegin %>
+  </div>
+  <div class="field">
+    <%= f.label :dend %><br />
+    <%= f.datetime_select :dend %>
+  </div>
+  <div class="field">
+    <%= f.label :excerpt %><br />
+    <%= f.text_area :excerpt %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

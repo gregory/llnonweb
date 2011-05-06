@@ -95,6 +95,11 @@ position:relative;
         #content{
             padding:10px;
         }
+			#map_container{
+				width:100%;
+				position:relative;
+				overflow:scroll;
+			}
     #footer{
         width:100%;margin-top:20px;
         height:300px;background-color:yellow;
@@ -115,8 +120,10 @@ position:relative;
   border: solid 1px #C66;
 }
 
-.fieldWithErrors {
+.field_with_errors {
   display: inline;
+text-decoration: underline;
+	border: solid 1px #C66;
 }
 
 .error_messages {
